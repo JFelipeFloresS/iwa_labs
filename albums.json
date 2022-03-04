@@ -1,0 +1,17 @@
+{
+    "albums": {
+        "1": {
+            "title": "AAAAAA",
+            "year": 2022
+        },
+        "2": {
+            "title": "BBBBBB",
+            "year": 2021
+        },
+        "3": {
+            "title": "CCCCCC",
+            "year": 2018
+        }
+    }
+
+}
