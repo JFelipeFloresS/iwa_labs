@@ -1,28 +1,18 @@
 const http = require("http"),
-    axios = require("axios");
+    logger = require("morgan"),
+    express = require("express"),
+    router  = express.Router(),
+    itemCtrl = require("./item-controller"),
+    bodyParser = require("body-parser");
 
-http.createServer((req, res) => {
-    //res.write(readJSON());
-    res.write(users.join(", ") + "\n" + emails.join(", "));
-    res.end();
-}).listen(8000);
+let app = express();
+let port = 8000;
 
-function readJSON() {
-    return JSON.stringify(require('./albums.json'));
-}
+app.use(bodyParser.json());
+app.use(logger("tiny"));
 
-let users, emails = [];
+app.get("/:num1/:num2/:logic", itemCtrl.calculator);
 
-(async function getNames() {
-
-    try {
-        const {
-            data
-        } = await axios.get("https://jsonplaceholder.typicode.com/users");
-        users = data.map(user => user.name);
-        emails = data.map(user => user.email);
-    } catch (e) {
-        console.log(e);
-    }
-
-})()
+app.listen(port, function(err) {
+    console.log("Listening on port: " + port);
+});
