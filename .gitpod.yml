@@ -9,5 +9,5 @@ tasks:
   - name: Npm initialisation
     init: |
       npm install
-      npm install nodemon
+      npm install nodemon mongoose
     command: npm run start
