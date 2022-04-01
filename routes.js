@@ -1,10 +1,17 @@
 const express = require("express"),
     router = express.Router(),
-    itemCtrl = require("./item-controller");
+    itemCtrl = require("./item-controller"),
+    userCtrl = require('./user-controller');
 
-router.get("/", itemCtrl.helloWorld);
-router.get("/:name", itemCtrl.replyName);
-router.get("/:num1/:num2", itemCtrl.randomCalculator);
-router.get("/:num1/:num2/:logic", itemCtrl.calculator);
+router.post('/users', userCtrl.createUser);
+router.get('/users', userCtrl.getUsers);
+router.get('/users/:email', userCtrl.getUser);
 
-module.exports = router;
+/*
+ router.get("/", itemCtrl.helloWorld);
+ router.get("/:name", itemCtrl.replyName);
+ router.get("/:num1/:num2", itemCtrl.randomCalculator);
+ router.get("/:num1/:num2/:logic", itemCtrl.calculator); 
+ */
+
+ module.exports = router;
